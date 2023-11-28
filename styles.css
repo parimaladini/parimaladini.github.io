@@ -1,13 +1,11 @@
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 0 auto;
-        max-width: 800px;
-        padding: 200px;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-       
-    }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, rgb(230, 236, 234), #0e80dd);
+    color: #008080;
+}
 
 #intro-container {
     position: fixed;
