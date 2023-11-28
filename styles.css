@@ -18,15 +18,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff; /* White background while intro is displayed */
+    background: #fff; 
     z-index: 1000;
 }
 
-/* Rest of your styles */
 
 
 #college-logo {
-    width: 150px; /* Adjust the size as needed */
+    width: 150px; 
     height: auto;
     margin-right: 20px;
 }
@@ -119,7 +118,7 @@ h1::after {
     
     top: 0;
     right: 0;
-    color: #008080; /* Dark Cyan */
+    color: #008080;
     animation: blink-caret 0.75s infinite;
 }
 
@@ -128,11 +127,3 @@ h1::after {
         opacity: 0;
     }
 }
-
-/* ... (your existing styles) ... */
-
-/* Add a class to disable hover effects */
-
-/* ... (your existing styles) ... */
-
-/* Add more specific styles as needed */
