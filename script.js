@@ -1,37 +1,47 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const algorithmsContainer = document.getElementById("algorithms-container");
+ 
 
-    // Add a class to disable hover and transition effects during intro
-    algorithmsContainer.classList.add("disable-hover-transition");
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    // Delay the display of the intro
-    setTimeout(function () {
-        document.getElementById("intro-container").style.display = "none";
-        // Remove the class to enable hover and transition after intro
-        algorithmsContainer.classList.remove("disable-hover-transition");
-    }, 2000); // Display for 2 seconds
+  const firebaseConfig = {
+    apiKey: "AIzaSyAbunsfYboVBve59cH9fw5MqCPCDh9xs_A",
+    authDomain: "signin-1f542.firebaseapp.com",
+    projectId: "signin-1f542",
+    storageBucket: "signin-1f542.appspot.com",
+    messagingSenderId: "640383751614",
+    appId: "1:640383751614:web:a313f7c7a5c752edf215ef",
+    measurementId: "G-EJ82PK6PRP"
+  };
 
-    // Delay the display of title and opacity of body
-    setTimeout(function () {
-        document.getElementById("title").style.display = "block";
-        document.body.style.opacity = 1;
-    }, 2000);
+  
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  auth.languageCode = 'en'
+  const analytics = getAnalytics(app);
+  const provider = new GoogleAuthProvider();
 
-    algorithms.forEach(function (algorithm, index) {
-        // Create a div element for each algorithm
-        const algorithmDiv = document.createElement("div");
-        algorithmDiv.className = "algorithm";
-        algorithmDiv.textContent = algorithm;
 
-        // Add a class to trigger the CSS transition
-        algorithmDiv.classList.add("fade-in");
+  const googleLogin = document.getElementById("google-login")
 
-        // Append the algorithm div to the container
-        algorithmsContainer.appendChild(algorithmDiv);
+  googleLogin.addEventListener("click", function(){
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const user = result.user;
+    console.log(user);
+    window.location.href="./logged.html";
+    
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+   
+   
+    
+  });
+  })
 
-        // Use a timeout to delay the appearance of each algorithm
-        setTimeout(function () {
-            algorithmDiv.style.opacity = 1;
-        }, (index + 1) * 1000); // Delay each algorithm by 1 second
-    });
-});
+  updateUserProfile();
